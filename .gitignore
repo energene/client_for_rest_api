@@ -1,0 +1,8 @@
+.DS_Store
+.DS_Store?
+node_modules
+._*
+.Spotlight-V100
+.Trashes
+db
+build
