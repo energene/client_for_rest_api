@@ -9,16 +9,8 @@
 </head>
 
 <body data-ng-app="TeamApp">
-  <section data-ng-controller="authController">
-    <main data-ng-view>
-    </main>
-  </section>
-
-  <footer>
-  	<section class="footer">
-  		<p>You are now looking at the footer</p>
-  	</section>
-  </footer>
+  <main data-ng-controller="teamController" data-ng-init="getAll()">
+  </main>
 
   <script src="bundle.js"></script>
   </body>
