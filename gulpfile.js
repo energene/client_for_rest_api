@@ -1,16 +1,16 @@
 const webpack = require('webpack-stream');
-const babel = require('babel-loader');
-const html = require('html-loader');
+// const babel = require('babel-loader');
+// const html = require('html-loader');
 const gulp = require('gulp');
-const eslint = require('gulp-eslint');
+// const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 
-gulp.task('static:dev', function() {
+gulp.task('static:dev', () => {
   gulp.src('app/**/*.html')
   .pipe(gulp.dest('build/'));
 });
 
-gulp.task('webpack:dev', function() {
+gulp.task('webpack:dev', () => {
   return gulp.src('app/js/entry.js')
   .pipe(webpack({
     output: {
@@ -20,7 +20,7 @@ gulp.task('webpack:dev', function() {
   .pipe(gulp.dest('build/'));
 });
 
-gulp.task('webpack:test', function() {
+gulp.task('webpack:test', () => {
  return gulp.src(__dirname + '/test/test_entry.js', { read: true })
    .pipe(webpack({
      module: {
@@ -46,5 +46,3 @@ gulp.task('test:backend', () => {
 });
 
 gulp.task('default', ['build:dev']);
-
-////////////

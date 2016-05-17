@@ -13,7 +13,7 @@ teamsRouter.get('/teams', jwtAuth, (req, res) => {
 });
 
 teamsRouter.put('/teams/:id', jwtAuth, jsonParser, (req, res) => {
-  Team.findOneAndUpdate({ _id: req.params.id }, req.body,  {new: true}, (err, data) => {
+  Team.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, data) => {
     if (err) return dbErrorHandler(err, res);
     res.status(200).json(data);
   });
@@ -30,6 +30,6 @@ teamsRouter.post('/teams', jwtAuth, jsonParser, (req, res) => {
 teamsRouter.delete('/teams/:id', jwtAuth, (req, res) => {
   Team.remove({ _id: req.params.id }, (err) => {
     if (err) return dbErrorHandler(err, res);
-    res.status(200).json({ msg: 'delete successful'});
+    res.status(200).json({ msg: 'delete successful' });
   });
 });

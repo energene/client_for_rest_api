@@ -1,7 +1,7 @@
 {
   "name": "client_for_rest_api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Angular front end for 2 resource REST API",
   "main": "gulpfile.js",
   "directories": {
     "test": "test"
