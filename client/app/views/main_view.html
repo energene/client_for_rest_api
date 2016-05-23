@@ -1,0 +1,29 @@
+<body data-ng-app="TeamApp">
+ <h1>Build A Team!</h1>
+ <section data-ng-controller="TeamsController" data-ng-init="getAll()">
+	 <section>
+			<team-form data-save="create(newTeam)" data-button-text="Create Team" data-new-team="newTeam"></team-form>
+	 </section>
+	 <ul id="teamlist">
+     <team-display data-ng-repeat="team in teams" data-team-data="team">
+       <team-form data-save="update(team)" data-button-text="Update Team" data-new-team="team">
+         <button data-ng-click="remove(team)">Delete Team</button>
+       </team-form>
+     </team-display>
+   </ul>
+ </section>
+
+ <h1>Build A Player!</h1>
+ <section data-ng-controller="PlayersController" data-ng-init="getAll()">
+   <section>
+			<player-form data-save="create(newPlayer)" data-button-text="Create Player" data-new-player="newPlayer"></player-form>
+	 </section>
+	 <ul id="playerlist">
+     <player-display data-ng-repeat="player in players" data-player-data="player">
+       <player-form data-save="update(player)" data-button-text="Update Player" data-new-player="player">
+         <button data-ng-click="remove(player)">Delete Player</button>
+       </player-form>
+     </player-display>
+   </ul>
+ </section>
+</body>
