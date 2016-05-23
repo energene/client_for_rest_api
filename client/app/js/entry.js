@@ -1,7 +1,5 @@
-require('angular');
+var angular = require('angular');
 require('angular-route');
-
-var angular = window.angular;
 
 var teamApp = angular.module('TeamApp', ['ngRoute']);
 
@@ -11,9 +9,7 @@ require('./directives')(teamApp);
 
 teamApp.config(['$routeProvider', function(routes) {
   routes
-    })
-    .when('/home', {
-      //controller: 'Controller',
+    .when('/', {
       templateUrl: '/views/main_view.html'
     })
     .otherwise({

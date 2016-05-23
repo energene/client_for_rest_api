@@ -3,6 +3,6 @@ var app = express();
 
 app.use(express.static(__dirname + '/build'));
 
-app.listen(process.env.PORT || 9999, function() {
+app.listen(process.env.PORT || 9999, () => {
   console.log('server up on port 9999');
 });

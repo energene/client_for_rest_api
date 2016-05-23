@@ -1,4 +1,4 @@
-# react
+# Refactored Angular CRUD
 This is a two resource Angular CRUD client app backed by Mongo for data persistence.
 
 ## Running
@@ -7,18 +7,13 @@ This is a two resource Angular CRUD client app backed by Mongo for data persiste
 
 ```bash
 > npm install
-```
-
-### Install gulp
-
-```bash
-> npm install --save-dev gulp
+> cd client_for_rest_api
 ```
 
 ### Build assets
 
 ```bash
-> ./node_modules/.bin/gulp
+> gulp
 ```
 
 ### Start mongodb
@@ -27,14 +22,22 @@ This is a two resource Angular CRUD client app backed by Mongo for data persiste
 > mongod --dbpath=./db
 ```
 
-### Run server
+### Run backend server
+open another terminal window
 
 ```bash
-> node ./server.js
+> node ./server/server.js
+```
+
+### Run client server
+open a third terminal window
+
+```bash
+> node ./client/server.js
 ```
 
 ### CHECK IT OUT
 
 ```
-open http://localhost:5000
+open http://localhost:3000
 ```

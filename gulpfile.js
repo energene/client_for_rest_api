@@ -4,18 +4,24 @@ const babel = require('babel-loader');
 const html = require('html-loader');
 
 gulp.task('static:dev', function() {
-  gulp.src('app/**/*.html')
-  .pipe(gulp.dest('build/'));
+  gulp.src('client/app/**/*.html')
+  .pipe(gulp.dest('client/build/'));
+});
+
+
+gulp.task('css:dev', function() {
+  gulp.src('client/app/**/*.css')
+  .pipe(gulp.dest('client/build/'));
 });
 
 gulp.task('webpack:dev', function() {
-  return gulp.src('app/js/entry.js')
+  return gulp.src('client/app/js/entry.js')
   .pipe(webpack({
     output: {
       filename: 'bundle.js'
     }
   }))
-  .pipe(gulp.dest('build/'));
+  .pipe(gulp.dest('client/build/'));
 });
 
 gulp.task('webpack:test', function() {
@@ -36,6 +42,6 @@ gulp.task('webpack:test', function() {
    .pipe(gulp.dest('test'));
 });
 
-gulp.task('build:dev', ['webpack:dev', 'static:dev']);
+gulp.task('build:dev', ['webpack:dev', 'static:dev', 'css:dev']);
 
 gulp.task('default', ['build:dev']);
