@@ -18,24 +18,19 @@ module.exports = exports = function(app) {
     var Resource = function(resource) {
       this.resource = resource;
     };
-    var config = {
-      headers:  {
-        'token': $window.localStorage.token
-      }
-    };
 
     Resource.prototype.getAll = function(cb) {
-      $http.get('http://localhost:3000/api/' + this.resource, config).then(success(cb), failure(cb));
+      $http.get('http://localhost:3000/api/' + this.resource).then(success(cb), failure(cb));
     };
 
     Resource.prototype.create = function(data, cb) {
-      $http.post('http://localhost:3000/api/' + this.resource, data, config).then(success(cb), failure(cb));
+      $http.post('http://localhost:3000/api/' + this.resource, data).then(success(cb), failure(cb));
     };
     Resource.prototype.update = function(data, cb) {
-      $http.put('http://localhost:3000/api/' + this.resource + '/' + data._id, data, config).then(success(cb), failure(cb));
+      $http.put('http://localhost:3000/api/' + this.resource + '/' + data._id, data).then(success(cb), failure(cb));
     };
     Resource.prototype.delete = function(data, cb) {
-      $http.delete('http://localhost:3000/api/' + this.resource + '/' + data._id, config).then(success(cb), failure(cb));
+      $http.delete('http://localhost:3000/api/' + this.resource + '/' + data._id).then(success(cb), failure(cb));
     };
     return function(resource) {
       return new Resource(resource);

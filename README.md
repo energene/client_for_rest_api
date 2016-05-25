@@ -1,5 +1,5 @@
 # Refactored Angular CRUD
-This is a two resource Angular CRUD client app backed by Mongo for data persistence.
+This is a two resource Angular CRUD client app backed by Mongo for data persistence. A service is included to provide CRUD routes. 
 
 ## Running
 
