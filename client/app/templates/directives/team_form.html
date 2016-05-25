@@ -1,0 +1,16 @@
+<form name="newTeamForm" data-ng-submit="save(newTeam)">  
+  <label for="newTeamName">Name:</label>
+  <input type="text" id="newTeamName" required data-ng-model="newTeam.name" value="{{newTeam.name}}">
+
+  <label for="newTeamCity">City: </label>
+  <input type="text" id="newTeamCity" data-ng-model="newTeam.city" placeholder="Newark" value="{{newTeam.city}}">
+
+  <label for="newTeamMascot">Mascot:</label>
+  <input type="text" id="newTeamMascot" data-ng-model="newTeam.mascot" placeholder="Wallabies" value="{{newTeam.mascot}}">
+
+  <label for="newTeamAge">Age:</label>
+  <input type="text" id="newTeamAge" data-ng-model="newTeam.age" placeholder="0" value="{{newTeam.age}}">
+
+  <button type="submit">{{buttonText}}</button>
+  <ng-transclude></ng-transclude>
+</form>

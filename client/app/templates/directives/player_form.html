@@ -1,0 +1,19 @@
+<form name="newPlayerForm" data-ng-submit="save(newPlayer)">
+  <label for="newPlayerName">Name:</label>
+  <input type="text" id="newPlayerName" required data-ng-model="newPlayer.name" value="{{newPlayer.name}}">
+
+  <label for="newPlayerAge">Age:</label>
+  <input type="text" id="newPlayerAge" data-ng-model="newPlayer.age" placeholder="0" value="{{newPlayer.age}}">
+
+  <label for="newPlayerPosition">Position: </label>
+  <input type="text" id="newPlayerPosition" data-ng-model="newPlayer.position" placeholder="Defensive Back" value="{{newPlayer.position}}">
+
+  <label for="newPlayerHeight">Height:</label>
+  <input type="text" id="newPlayerHeight" data-ng-model="newPlayer.height" placeholder="72" value="{{newPlayer.height}}">
+
+  <label for="newPlayerWeight">Weight:</label>
+  <input type="text" id="newPlayerWeight" data-ng-model="newPlayer.weight" placeholder="200" value="{{newPlayer.weight}}">
+
+  <button type="submit">{{buttonText}}</button>
+  <ng-transclude></ng-transclude>
+</form>
