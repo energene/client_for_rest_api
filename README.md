@@ -1,4 +1,4 @@
-# react
+# Angular Client for REST API
 This is a two resource CRUD client app using the Angular framework and backed by Mongo for data persistence.
 
 ## Running
