@@ -1,0 +1,44 @@
+{
+  "name": "client_for_rest_api",
+  "version": "1.0.0",
+  "description": "Angular front end for 2 resource REST API",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Gene Troy",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongoose": "^4.3.6"
+  },
+  "devDependencies": {
+    "angular": "^1.4.8",
+    "angular-mocks": "^1.5.0",
+    "angular-route": "^1.5.1",
+    "babel-core": "^6.7.2",
+    "babel-loader": "^6.2.4",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-angular-protractor": "^0.1.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.7",
+    "gulp-protractor": "^2.3.0",
+    "html-loader": "^0.4.3",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.7",
+    "mocha": "^2.4.5",
+    "webpack": "^1.12.14",
+    "webpack-stream": "^3.2.0"
+  }
+}
