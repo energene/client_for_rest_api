@@ -56,7 +56,7 @@ describe('The player api', () => {
     request(origin)
       .post('/players/')
       .set('token', newUserToken)
-      .send({name: 'Bronko Nagurski', age: 25, position: 'Running Back', height: 72, weight: 220})
+      .send({ name: 'Bronko Nagurski', age: 25, position: 'Running Back', height: 72, weight: 220 })
       .end((err, res) => {
         expect(err).to.eql(null);
         expect(res).to.have.status(200);
@@ -73,7 +73,8 @@ describe('The player api', () => {
   describe('requests that require a populated DB', () => {
 
     beforeEach((done) => {
-      player.create({name: 'test player'}, (err, data) => {
+      player.create({ name: 'test player' }, (error, data) => {
+        if (error) console.log(error);
         this.testplayer = data;
         done();
       });
@@ -83,7 +84,7 @@ describe('The player api', () => {
       request(origin)
         .put('/players/' + this.testplayer._id)
         .set('token', newUserToken)
-        .send({name: 'Richard Simmons', age: 33})
+        .send({ name: 'Richard Simmons', age: 33 })
         .end((err, res) => {
           expect(err).to.eql(null);
           expect(res).to.have.status(200);

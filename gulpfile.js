@@ -1,47 +1,42 @@
 var gulp = require('gulp');
+var eslint = require('gulp-eslint');
 var webpack = require('webpack-stream');
-const babel = require('babel-loader');
-const html = require('html-loader');
 
-gulp.task('static:dev', function() {
-  gulp.src('client/app/**/*.html')
-  .pipe(gulp.dest('client/build/'));
-});
+var paths = {
+  scripts: [
+    __dirname + '/index.js',
+    __dirname + '/gulpfile.js',
+    __dirname + '/client/app/**/*.js',
+    __dirname + 'client/client_server.js',
+    __dirname + '/server/lib/**/*.js',
+    __dirname + '/server/models/**/*.js',
+    __dirname + '/server/routes/**/*.js',
+    __dirname + '/server/server.js'
+  ]
+};
 
-
-gulp.task('css:dev', function() {
-  gulp.src('client/app/**/*.css')
-  .pipe(gulp.dest('client/build/'));
-});
-
-gulp.task('webpack:dev', function() {
+gulp.task('webpack:dev', () => {
   return gulp.src('client/app/js/entry.js')
   .pipe(webpack({
+    devtool: 'source-map',
     output: {
       filename: 'bundle.js'
     }
   }))
-  .pipe(gulp.dest('client/build/'));
+  .pipe(gulp.dest('./client/build/'));
 });
 
-gulp.task('webpack:test', function() {
- return gulp.src(__dirname + '/test/test_entry.js', { read: true })
-   .pipe(webpack({
-     module: {
-      loaders: [
-        {
-          test: /\.html$/,
-          loader: 'html'
-        }
-      ]
-     },
-     output: {
-       filename: 'test_bundle.js'
-     }
-   }))
-   .pipe(gulp.dest('test'));
+gulp.task('static:dev', () => {
+  gulp.src('client/app/**/*.html')
+  .pipe(gulp.dest('./client/build/'));
 });
 
-gulp.task('build:dev', ['webpack:dev', 'static:dev', 'css:dev']);
+gulp.task('lint', () => {
+  return gulp.src(paths.scripts)
+  .pipe(eslint())
+  .pipe(eslint.format());
+});
+
+gulp.task('build:dev', ['webpack:dev', 'static:dev']);
 
 gulp.task('default', ['build:dev']);

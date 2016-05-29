@@ -6,7 +6,6 @@ var teamsRouter = module.exports = exports = express.Router();
 
 teamsRouter.get('/teams', (req, res) => {
   Team.find({}, (err, data) => {
-    console.log("GETTEAMWORKS");
     if (err) return dbErrorHandler(err, res);
     res.status(200).json(data);
   });

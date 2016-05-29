@@ -174,7 +174,6 @@
       "always"
     ],
     "sort-vars": 0,
-    "keyword-spacing": 2,
     "space-before-function-paren": [
       2,
       "never"

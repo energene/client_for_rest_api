@@ -57,7 +57,7 @@ describe('The team api', () => {
     request(origin)
       .post('/teams/')
       .set('token', newUserToken)
-      .send({name: 'Bashers', city: 'Concussionville', mascot: 'Dinged Helmet', age: 99})
+      .send({ name: 'Bashers', city: 'Concussionville', mascot: 'Dinged Helmet', age: 99 })
       .end((err, res) => {
         expect(err).to.eql(null);
         expect(res).to.have.status(200);
@@ -72,7 +72,8 @@ describe('The team api', () => {
 
   describe('requests that require a populated DB', () => {
     beforeEach((done) => {
-      team.create({name: 'test team'}, (err, data) => {
+      team.create({ name: 'test team' }, (err, data) => {
+        if (err) console.log(err);
         this.testTeam = data;
         done();
       });
@@ -82,7 +83,7 @@ describe('The team api', () => {
       request(origin)
         .put('/teams/' + this.testTeam._id)
         .set('token', newUserToken)
-        .send({name: 'Cavemen', city: 'Newark', age: 1})
+        .send({ name: 'Cavemen', city: 'Newark', age: 1 })
         .end((err, res) => {
           expect(err).to.eql(null);
           expect(res).to.have.status(200);
