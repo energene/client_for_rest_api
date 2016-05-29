@@ -8,10 +8,19 @@ var handleError = function(error) {
   this.errors = (this.errors || []).push(error);
 };
 
+var copy = function(object) {
+  var temp = object.constructor();
+  for (var key in object) {
+    temp[key] = object[key];
+  }
+  return temp;
+};
+
 teamApp.controller('TeamsController', ['$http', function($http) {
   this.teams = [];
+
   this.getAll = () => {
-    $http.get(baseUrl + '/api/teams')
+    $http.get(baseUrl + '/api/teams', this.newTeam)
     .then((res) => {
       this.teams = res.data;
     }, handleError.bind(this));
@@ -30,6 +39,18 @@ teamApp.controller('TeamsController', ['$http', function($http) {
       .then(() => {
         team.editing = false;
       }, handleError.bind(this));
+  };
+
+  this.editTeam = (team) => {
+      team.editing = true;
+      this.backup = copy(team);
+    };
+
+  this.cancelTeam = (team) => {
+    team.editing = false;
+    for (var key in this.backup) {
+      team[key] = this.backup[key];
+    }
   };
 
   this.removeTeam = (team) => {
@@ -62,6 +83,18 @@ teamApp.controller('PlayersController', ['$http', function($http) {
       .then(() => {
         player.editing = false;
       }, handleError.bind(this));
+  };
+
+  this.editPlayer = (player) => {
+      player.editing = true;
+      this.backup = copy(player);
+    };
+
+  this.cancelPlayer = (player) => {
+    player.editing = false;
+    for (var key in this.backup) {
+      player[key] = this.backup[key];
+    }
   };
 
   this.removePlayer = (player) => {

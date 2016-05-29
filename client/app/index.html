@@ -22,7 +22,7 @@
 
     <ul id="teamList">
       <li data-ng-repeat="team in teamsctrl.teams">
-        <div data-ng-if="!team.editing">The {{team.name}} are in {{team.city}} and their mascot is a {{team.mascot}}</div>
+        <p>The {{team.name}} are in {{team.city}} and their mascot is a {{team.mascot}}</p>
         <form data-ng-if="team.editing" data-ng-submit="teamsctrl.updateTeam(team)">
           <label for="name">Team Name</label>
           <input type="text" name="name" data-ng-model="team.name">
@@ -33,11 +33,11 @@
           <label for="mascot">Mascot</label>
           <input type="text" name="mascot" data-ng-model="team.mascot">
 
-          <button type="submit">Update Team</button>
-          <button data-ng-click="team.editing = false">Cancel</button>
+          <button class="cancel-team" data-ng-click="teamsctrl.cancelTeam(team)">Cancel</button>
+          <button class="update-team" type="submit">Update</button>
         </form>
-        <button data-ng-if="!team.editing" data-ng-click="team.editing = true">Edit</button>
-        <button data-ng-click="teamsctrl.removeTeam(team)">Delete This Team</button>
+          <button class="edit-team" data-ng-if="!team.editing" data-ng-click="teamsctrl.editTeam(team)">Edit</button>
+          <button class="remove-team" data-ng-click="teamsctrl.removeTeam(team)">Remove</button>
       </li>
     </ul>
   </section>
@@ -63,17 +63,17 @@
           <label for="name">Player Name</label>
           <input type="text" name="name" data-ng-model="player.name">
 
-          <label for="city">Position</label>
+          <label for="position">Position</label>
           <input type="text" name="position" data-ng-model="player.position">
 
-          <label for="mascot">Team</label>
+          <label for="team">Team</label>
           <input type="text" name="team" data-ng-model="player.team">
 
-          <button type="submit">Update Player</button>
-          <button data-ng-click="player.editing = false">Cancel</button>
+          <button class="cancel-player" data-ng-click="playersctrl.cancelPlayer(player)">Cancel</button>
+          <button class="update-player" type="submit">Update</button>
         </form>
-        <button data-ng-if="!player.editing" data-ng-click="player.editing = true">Edit</button>
-        <button data-ng-click="playersctrl.removePlayer(player)">Cut This Player</button>
+          <button class="edit-player" data-ng-if="!player.editing" data-ng-click="playersctrl.editPlayer(player)">Edit</button>
+          <button class="remove-player" data-ng-click="playersctrl.removePlayer(player)">Remove</button>
       </li>
     </ul>
   </section>
