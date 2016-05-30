@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team Builder</title>
+</head>
+
+<body data-ng-app="teamApp">
+  <section data-ng-controller="TeamsController as teamsctrl" data-ng-init="teamsctrl.getAll()">
+    <form data-ng-submit="teamsctrl.createTeam()">
+      <label for="name">Team Name</label>
+      <input type="text" name="name" data-ng-model="teamsctrl.newTeam.name" placeholder="Seahawks">
+
+      <label for="city">City</label>
+      <input type="text" name="city" data-ng-model="teamsctrl.newTeam.city" placeholder="Seattle">
+
+      <label for="mascot">Mascot</label>
+      <input type="text" name="mascot" data-ng-model="teamsctrl.newTeam.mascot" placeholder="Big Bird">
+      <button class="create-team" type="submit">Create New Team</button>
+    </form>
+
+    <ul class="teamList">
+      <li data-ng-repeat="team in teamsctrl.teams">
+        <p>The {{team.name}} are in {{team.city}} and their mascot is a {{team.mascot}}</p>
+        <form data-ng-if="team.editing" data-ng-submit="teamsctrl.updateTeam(team)">
+          <label for="name">Team Name</label>
+          <input type="text" name="name" data-ng-model="team.name">
+
+          <label for="city">City</label>
+          <input type="text" name="city" data-ng-model="team.city">
+
+          <label for="mascot">Mascot</label>
+          <input type="text" name="mascot" data-ng-model="team.mascot">
+
+          <button class="cancel-team" data-ng-click="teamsctrl.cancelTeam(team)">Cancel</button>
+          <button class="update-team" type="submit">Update</button>
+        </form>
+          <button class="edit-team" data-ng-if="!team.editing" data-ng-click="teamsctrl.editTeam(team)">Edit</button>
+          <button class="remove-team" data-ng-click="teamsctrl.removeTeam(team)">Remove</button>
+      </li>
+    </ul>
+  </section>
+
+  <section data-ng-controller="PlayersController as playersctrl" data-ng-init="playersctrl.getAll()">
+    <form data-ng-submit="playersctrl.createPlayer()">
+      <label for="name">Player Name</label>
+      <input type="text" name="name" data-ng-model="playersctrl.newPlayer.name" placeholder="Bronko Nagurski">
+
+      <label for="position">Position</label>
+      <input type="text" name="position" data-ng-model="playersctrl.newPlayer.position" placeholder="Fullback">
+
+      <label for="team">Team</label>
+      <input type="text" name="team" data-ng-model="playersctrl.newPlayer.team" placeholder="Big Birds">
+      <button class="create-player" type="submit">Create New Player</button>
+    </form>
+
+    <ul class="playerList">
+      <li data-ng-repeat="player in playersctrl.players">
+        <p data-ng-if="!player.editing">{{player.name}} plays {{player.position}} for the {{player.team}}</p>
+        <form data-ng-if="player.editing" data-ng-submit="playersctrl.updatePlayer(player)">
+          <label for="name">Player Name</label>
+          <input type="text" name="name" data-ng-model="player.name">
+
+          <label for="position">Position</label>
+          <input type="text" name="position" data-ng-model="player.position">
+
+          <label for="team">Team</label>
+          <input type="text" name="team" data-ng-model="player.team">
+
+          <button class="cancel-player" data-ng-click="playersctrl.cancelPlayer(player)">Cancel</button>
+          <button class="update-player" type="submit">Update</button>
+        </form>
+          <button class="edit-player" data-ng-if="!player.editing" data-ng-click="playersctrl.editPlayer(player)">Edit</button>
+          <button class="remove-player" data-ng-click="playersctrl.removePlayer(player)">Remove</button>
+      </li>
+    </ul>
+  </section>
+
+  <script src="./bundle.js"></script>
+  </body>
+</html>

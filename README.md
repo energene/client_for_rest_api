@@ -1,55 +1,46 @@
 # react
-This is a single resource CRUD client app using the React framework and backed by Mongo for data persistence. Tests for all routes are included.
+This is a two resource CRUD client app using the Angular framework and backed by Mongo for data persistence. Karma is used as the test framework.
 
 ## Running
 
 ### Install packages
-
+First, clone the app to your machine and navigate to the app's root directory. Then, install the npm packages, like so:
 ```bash
 > npm install
 ```
 
-### Install gulp
-
-```bash
-> npm install --save-dev gulp
-```
-
 ### Build assets
-
+Now, build the assets the app will need to function.
 ```bash
 > ./node_modules/.bin/gulp
 ```
 
 ### Start mongodb
-
+Start up the database.
 ```bash
 > mongod --dbpath=./db
 ```
 
-### Run server
-
+### Run backend server
+Open up another terminal window, navigate to the root, and run the server like so:
 ```bash
-> node ./server.js
+> node ./server/server.js
+```
+
+### Run client server
+Open up a third terminal window, navigate to the root, and run the server like so:
+```bash
+> node ./client/client_server.js
+```
+
+### Run linter
+Open up a fourth terminal window, navigate to the root, and run the linter like so:
+```bash
+> gulp lint
 ```
 
 ### CHECK IT OUT
-
+Go to your browser.
 ```
-open http://localhost:5000
+open http://localhost:9999
 ```
-
-####Technologies:
-
-  - React: Client-side framework (including React-router and React-dom) https://github.com/reactjs/react-tutorial
-  - Gulp: Task runner
-  - Webpack: Module bundler (plus Webpack-stream to run Webpack as a stream to conveniently integrate with Gulp)
-  - Express: Server package  
-  - Babel: Javascript compiler (including Babel-loader to transpile JS files using Babel and Webpack, and Babel-preset-react to transform JSX into createElement calls)
-  - Mongoose: MongoDB object modeling tool designed to work in an asynchronous environment
-
-
-####Dev Team:
-
-    Kris Skelton
-    Gene Troy
