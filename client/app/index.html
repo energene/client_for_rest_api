@@ -16,11 +16,10 @@
 
       <label for="mascot">Mascot</label>
       <input type="text" name="mascot" data-ng-model="teamsctrl.newTeam.mascot" placeholder="Big Bird">
-
-      <button type="submit">Create New Team</button>
+      <button class="create-team" type="submit">Create New Team</button>
     </form>
 
-    <ul id="teamList">
+    <ul class="teamList">
       <li data-ng-repeat="team in teamsctrl.teams">
         <p>The {{team.name}} are in {{team.city}} and their mascot is a {{team.mascot}}</p>
         <form data-ng-if="team.editing" data-ng-submit="teamsctrl.updateTeam(team)">
@@ -52,13 +51,12 @@
 
       <label for="team">Team</label>
       <input type="text" name="team" data-ng-model="playersctrl.newPlayer.team" placeholder="Big Birds">
-
-      <button type="submit">Create New Player</button>
+      <button class="create-player" type="submit">Create New Player</button>
     </form>
 
-    <ul id="playerList">
+    <ul class="playerList">
       <li data-ng-repeat="player in playersctrl.players">
-        <div data-ng-if="!player.editing">{{player.name}} plays {{player.position}} for the {{player.team}}</div>
+        <p data-ng-if="!player.editing">{{player.name}} plays {{player.position}} for the {{player.team}}</p>
         <form data-ng-if="player.editing" data-ng-submit="playersctrl.updatePlayer(player)">
           <label for="name">Player Name</label>
           <input type="text" name="name" data-ng-model="player.name">

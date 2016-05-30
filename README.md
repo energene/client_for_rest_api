@@ -1,5 +1,5 @@
 # react
-This is a two resource CRUD client app using the Angular framework and backed by Mongo for data persistence.
+This is a two resource CRUD client app using the Angular framework and backed by Mongo for data persistence. Karma is used as the test framework.
 
 ## Running
 

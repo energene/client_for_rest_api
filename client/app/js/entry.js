@@ -10,12 +10,14 @@ var handleError = function(error) {
 
 var copy = function(object) {
   var temp = object.constructor();
+
   for (var key in object) {
-    temp[key] = object[key];
+    if (object.hasOwnProperty(key)) {
+      temp[key] = object[key];
+    }
   }
   return temp;
 };
-
 teamApp.controller('TeamsController', ['$http', function($http) {
   this.teams = [];
 
@@ -49,7 +51,9 @@ teamApp.controller('TeamsController', ['$http', function($http) {
   this.cancelTeam = (team) => {
     team.editing = false;
     for (var key in this.backup) {
-      team[key] = this.backup[key];
+      if (this.backup.hasOwnProperty(key)) {
+        team[key] = this.backup[key];
+      }
     }
   };
 
@@ -93,7 +97,9 @@ teamApp.controller('PlayersController', ['$http', function($http) {
   this.cancelPlayer = (player) => {
     player.editing = false;
     for (var key in this.backup) {
+      if (this.backup.hasOwnProperty(key)) {
       player[key] = this.backup[key];
+      }
     }
   };
 
